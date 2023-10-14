@@ -107,16 +107,6 @@ img {
    }
  </script>
 <button class="g-recaptcha" 
-        data-sitekey="reCAPTCHA_site_key" 
+        data-sitekey="6LcuGp4oAAAAAK5dFnTyvA6ZBQbtKvq1o278pn4g" 
         data-callback='onSubmit' 
         data-action='submit'>Submit</button>
-<script>
-      function onClick(e) {
-        e.preventDefault();
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6LcuGp4oAAAAAK5dFnTyvA6ZBQbtKvq1o278pn4g', {action: 'submit'}).then(function(token) {
-              // Add your logic to submit to your backend server here.
-          });
-        });
-      }
-  </script>
