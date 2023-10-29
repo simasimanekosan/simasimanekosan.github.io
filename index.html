@@ -66,11 +66,8 @@ body {
 }
  
 img {
-    height: 300px;
-    display: inline-block;
-    vertical-align: top;
-    position: absolute;
-    right: 30px;
+    max-width: 100%;
+    height: auto;
 }
 </style>
 <a href="https://scratch.mit.edu/projects/897146705/">この作品も見てね</a>
@@ -94,15 +91,20 @@ img {
 </div>
 <style>
 .ssd-w93293{
-    border: 2px solid #000;
-    width: 150px;
-    height: 150px;
+  border: 1px solid #ddd;
+  width: 300px;
+  height: 226px;
+  margin: 20px auto 0;
+  transition-duration: 0.5s;
 }
 .ssd-w93293 img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  cursor: pointer;
+}
+.ssd-w93293:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
 }
 </style>
 <button class="g-recaptcha" 
