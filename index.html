@@ -21,6 +21,17 @@
 	<script>console.warn("チャンネル登録してくださると嬉しいですhttps://www.youtube.com/channel/UCgNfnW4UPmSZX8K9HP5PdcA")</script>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
+<script>Push.create('simasimanekosanのホームページからのお知らせ', {
+　　body: '追加されたもの:通知機能',
+　　icon: 'favicon.ico',
+　　timeout: 8000, // 通知が消えるタイミング
+　　vibrate: [100, 100, 100], // モバイル端末でのバイブレーション秒数
+　　onClick: function() {
+　　　　// 通知がクリックされた場合の設定
+　　　　console.log(this);
+　　}
+});
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Q5TZKR8PZ"></script>
 <script>
