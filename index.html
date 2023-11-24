@@ -175,6 +175,51 @@ line-height: 80px;
   transform: translateY(-10px);
   transition-duration: 0.5s;
 }
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  background: #333;
+}
+
+a {
+  color: #999;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: #999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer a:hover {
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .md-flex {
+    display: flex;
+  }
+
+  .md-flex li + li {
+    margin-left: 16px;
+  }
+}
 </style>
 <table border="2">
 <tr>
@@ -183,7 +228,7 @@ line-height: 80px;
 </table>
 <footer class="footer">
   <ul class="md-flex">
-    <li><a href=https://simasimanekosan.github.io/watasinituite/">mitotannについて</a></li>
+    <li><a href="https://simasimanekosan.github.io/watasinituite">mitotannについて</a></li>
     <li><a href="https://simasimanekosan.github.io/souko">scratchのmitotann作品の倉庫</a></li>
     <li><a href="https://scratch.mit.edu/studios/34239383">お問い合わせ</a></li>
   </ul>
