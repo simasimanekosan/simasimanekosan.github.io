@@ -6,22 +6,170 @@
 <a href="https://www.microsoft.com/ja-jp/edge/download">Edgeをダウンロード<a>
 <a href="https://www.mozilla.org/ja/firefox/new/">Firefoxをダウンロード<a>
 </noscript>
-<body style="background-color:green">
+<style>
+@charset "UTF-8";
+
+.header {
+  position: sticky; /* headerを追従にする */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.logo {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+/* ハンバーガーボタンのデザイン */
+.drawer__button {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999; /* メニューを開いている時もクリックできるよう設定 */
+}
+/* ハンバーガーボタン内の線 */
+.drawer__button > span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2px;
+  background-color: black;
+  transform: translateX(-50%);
+}
+.drawer__button > span:first-child {
+  transform: translate(-50%, calc(-50% - 0.5rem));
+  transition: transform 0.3s ease;
+}
+.drawer__button > span:nth-child(2) {
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+.drawer__button > span:last-child {
+  transform: translate(-50%, calc(-50% + 0.5rem));
+  transition: transform 0.3s ease;
+}
+/* 展開時のデザイン */
+.drawer__button.active > span:first-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.drawer__button.active > span:nth-child(2) {
+  opacity: 0;
+}
+.drawer__button.active > span:last-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+/* メニューのデザイン */
+.drawer__nav {
+  position: fixed; /* 追従ヘッダーなどでも表示できるよう設定しておく */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+.drawer__nav.active {
+  opacity: 1;
+  visibility: visible;
+}
+.drawer__nav__inner {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  padding: 4rem 1.5rem 1rem;
+  margin: 0 0 0 auto;
+  overflow: scroll;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+.drawer__nav.active .drawer__nav__inner {
+  transform: translateX(0);
+}
+.drawer__nav__menu {
+  list-style: none;
+  padding-left: 0;
+}
+.drawer__nav__link {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 1rem 1rem;
+  border-bottom: solid 1px lightgray;
+}
+
+/* ハンバーガーメニュー展開時、背景を固定 */
+body.active {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 見た目の調整 */
+
+</style>
 <header class="header">
-  <div class="header-inner inner">
-    <h1 class="header-title"><a href="#saisyo">mitotannのホームページ</</a></h1>
-    <nav class="header-nav">
-      <ul class="header-nav-list">
-        <li class="header-nav-item"><a class="header-nav-item-link" href="#sinnsaku">新作</a></li>
-        <li class="header-nav-item"><a class="header-nav-item-link" href="https://qiita.com/simasimanekosan">qiitaアカウント</a></li>
-        <li class="header-nav-item"><a class="header-nav-item-link" href="https://github.com/simasimanekosan">githubアカウント</a></li>
-        <li class="header-nav-item"><a class="header-nav-item-link" href="https://simasimanekosan.github.io/python">python</a></li>
-        <!-- 変更するとき<li class="header-nav-item"><a class="header-nav-item-link" href="https://ioke-tag2.github.io/iloke-tag.github.io/">いぉけのサイト</a></li> -->
-	<li class="header-nav-item"><a class="header-nav-item-link" href="https://simasimanekosan.github.io/zyouhoukyoku/">サイトの情報局</a></li>
-      </ul>
+  <div class="header__inner">
+    <div class="logo"><a href="#saisyo">mitotannのホームページ</a></div>
+    <buttom class="drawer__button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </buttom>
+    <nav class="drawer__nav">
+      <div class="drawer__nav__inner">
+        <ul class="drawer__nav__menu">
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="#sinnsaku">新作</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="https://qiita.com/simasimanekosan">qiitaアカウント</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="https://github.com/simasimanekosan">githubアカウント</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="https://simasimanekosan.github.io/python">python</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="https://ioke-tag2.github.io/iloke-tag.github.io/">いぉけのサイト</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="https://simasimanekosan.github.io/zyouhoukyoku">このサイトの情報局</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="#kyouyuu">共有</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="#sec08">リンク</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="#sec09">リンク</a>
+          </li>
+          <li class="drawer__nav__item">
+            <a class="drawer__nav__link" href="#sec10">リンク</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </div>
 </header>
+<body style="background-color:green">
 <br>
 <br>
 <br>
@@ -49,6 +197,22 @@
 　　}
 });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(function () {
+  // ハンバーガーボタンクリックで実行
+  $(".drawer__button").click(function () {
+    $(this).toggleClass("active");
+    $(".drawer__nav").toggleClass("active");
+  });
+
+  $(".drawer__nav__link").click(function () {
+    $(".drawer__button").removeClass("active");
+    $(".drawer__nav").removeClass("active");
+  });
+  // function
+});
+</script>
 </head>
 <!--css-->
 <style>
@@ -61,18 +225,6 @@ h1 {
     letter-spacing: 5px;
 }
 
-p {
-    width: 50%;
-    line-height: 2;
-    display: inline-block;
-    background-color: #03A9F4;
-    padding: 20px;
-    position: relative;
-    z-index: 999;
-    margin: 50px 0 0;
-    color: #fff;
-    letter-spacing: 2px;
-}
 button {
     color: #fff;
     text-decoration: none;
@@ -229,7 +381,7 @@ ul {
   }
 }
 </style>
-<h4>共有</h4>
+<h4 id="kyouyuu">共有</h4>
 <a href="https://b.hatena.ne.jp/entry/s/https://simasimanekosan.github.io/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="https://simasimanekosan.github.io/" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 <a href="mailto:?subject=mitotannホームページスマホ版&Body=https://simasimanekosan.github.io/">📱スマホに送る</a><input type="text" value="https://simasimanekosan.github.io/" onmouseover="this.select()"></input>
@@ -241,3 +393,5 @@ ul {
   </ul>
   <p class="copyright">© 2023 simasimanekosan All Rights Reserved.</p>
 </footer>
+
+</html>
