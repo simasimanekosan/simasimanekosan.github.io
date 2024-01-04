@@ -186,13 +186,11 @@ body.active {
 <br>
 <br>
 <br>
-<p>2024年01月01日00:00まであと、<span id="coundown01"></span></p>
 <br>
-<span style="color:white;font-size:40px">1:今活動していること</span>
-<br>
-<span style="color:white;font-size:40px">python, javascript, htmlなどをやっています。</span>
-<br>
-<span style="color:white;font-size:19px"> 作成者   mitotann</span>
+<span style="color:white;font-size:50px">今年のニュース</span>
+<span style="color:red;font-size:40px">2024年1月1日に能登地方で震度7を観測しました</span>
+<span style="color:white;font-size:40px">募金をしてくださる方がございましたらよろしくお願いします</span>
+<a href="https://donation.yahoo.co.jp/detail/1630064">ぜひ募金する</a>
 <br>
 <head>
 	<meta charset="utf-8">
@@ -231,77 +229,7 @@ $(function () {
   // function
 });
 </script>
-<script>
-const nowTime = new Date();
-const limitTime = new Date(nowTime.getFullYear() + 1, 0, 1, 0, 0, 0);
 
-function CountdownTimer(elemID, timeLimit) {
-  this.initialize.apply(this, arguments);
-}
-CountdownTimer.prototype =   {
-
-  initialize: function(elemID, timeLimit) {
-    this.elem = document.getElementById(elemID);
-    this.timeLimit = timeLimit;
-  },
-  
-  countDown : function()  {
-    let  timer = "";
-    let  today = new Date();
-    let  days = Math.floor((this.timeLimit - today) / (24 * 60 * 60 * 1000));
-    let  hours = Math.floor(((this.timeLimit - today) % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-    let  mins = Math.floor(((this.timeLimit - today) % (24 * 60 * 60 * 1000)) / (60 * 1000)) % 60;
-    let  secs = Math.floor(((this.timeLimit - today) % (24 * 60 * 60 * 1000)) / 1000) % 60 % 60;
-    let  milis = Math.floor(((this.timeLimit - today) % (24 * 60 * 60 * 1000)) / 10) % 100;
-    let  me = this;
-        
-    if(this.elem!=null){
-      if((this.timeLimit - today) > 0){
-        if(days>0){
-          timer =  '<span class="num">' + days + '</span>日';
-        }
-        if(hours>0){
-          timer = timer + '<span class="num">' + this.addZero(hours) + '</span>時間';
-        }
-        timer =  timer + '<span class="num">' + this.addZero(mins) +  '</span>分<span class="num">' + this.addZero(secs) + '</span>秒'  + '<span class="num">' + this.addZero(milis) + '</span>';
-        this.elem.innerHTML = timer;
-        tid = setTimeout(function() { me.countDown(); }, 10);
-      }else{
-        return;
-      }
-    }
-  },
-
-  addZero : function(num)  {
-    num = '00' + num;
-    str = num.substring(num.length - 2, num.length);
-    return str ;
-  }
-}
-const timer01 = new CountdownTimer("coundown01", limitTime); 
-timer01.countDown();
-</script>
-<script>
-jQuery(function() {
-    var pagetop = $('#saisyo');   
-    pagetop.hide();
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {  
-            pagetop.fadeIn();
-        } else {
-            pagetop.fadeOut();
-        }
-    });
-  $('a[href^="#"]').click(function(){
-    var time = 500;
-    var href= $(this).attr("href");
-    var target = $(href == "#" ? 'html' : href);
-    var distance = target.offset().top;
-    $("html, body").animate({scrollTop:distance}, time, "swing");
-    return false;
-  });
-});
-</script>
 </head>
 <!--css-->
 <style>
